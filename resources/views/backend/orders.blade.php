@@ -49,7 +49,7 @@
         </thead>
         <tbody>
      @foreach($orders->all() as $order)
-          <tr class="accordion-toggle collapsed" id="accordion1" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
+          <tr>
           
             <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
             <td>{{$order->or_id}}</td>
@@ -61,7 +61,7 @@
            
             <td><span class="text-ellipsis"></span></td>
             <td>
-            <a href="{{asset('admin/orders/view/'.$order->or_id)}}"  class="btn btn-success"  > <i class="fas fa-eye"></i></a>
+            <a href="{{URL::to('/admin/orders/view/' .$order->or_code )}}"  class="btn btn-success"  > <i class="fas fa-eye"></i></a>
           
          
   

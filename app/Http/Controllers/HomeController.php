@@ -87,6 +87,25 @@ class HomeController extends Controller
             $meta_title =$seo->cate_name;
             $url_canonical = $request->url();
         }
+        if($request->orderby){
+            $orderby = $request->orderby;
+            switch($orderby)
+            {
+                case 'desc':
+                    $data['items'] = Product::where('pro_cate',$id)->orderBy('pro_id','desc');
+                break;
+                case 'asc':
+                    $data['items'] = Product::where('pro_cate',$id)->orderBy('pro_Gia','asc');
+                break;
+                case 'price_max':
+                    $data['items'] = Product::where('pro_cate',$id)->orderBy('pro_Gia','asc');
+                break;
+                case 'price_min':
+                    $data['items'] = Product::where('pro_cate',$id)->orderBy('pro_Gia','desc');
+                break;  
+
+            }
+        }
         $data['items'] = Product::where('pro_cate',$id)->orderBy('pro_id','desc')->paginate(3);
         return view('fontend.list_product',$data)->with(compact('cate','meta_desc','meta_keywords','meta_title','url_canonical'));
     }

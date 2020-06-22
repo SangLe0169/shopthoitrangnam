@@ -80,9 +80,13 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/trangchu');
     }
-    public function getforgot()
+    public function getforgot(Request $request)
     {
-        return view('fontend.forgot');
+        $meta_desc ='';
+        $meta_keywords='';
+        $meta_title ='';
+        $url_canonical = $request->url();
+        return view('fontend.forgot')->with(compact('meta_desc','meta_keywords','meta_title','url_canonical'));
     }
     public function postforgot(Request $request)
     {
@@ -110,6 +114,10 @@ class LoginController extends Controller
     }
     public function getReset(Request $request)
     {
+        $meta_desc ='';
+        $meta_keywords='';
+        $meta_title ='';
+        $url_canonical = $request->url();
         $code = $request->code;
         $email =$request->email;
 
@@ -122,7 +130,7 @@ class LoginController extends Controller
         {
             return redirect('/')->with('danger','Đường dẫn ko đúng, vui lòng thử lại');
         }
-        return view('fontend.password_reset');
+        return view('fontend.password_reset')->with(compact('meta_desc','meta_keywords','meta_title','url_canonical'));
     }
     public function postReset(ResetPasswordRequest $request)
     {

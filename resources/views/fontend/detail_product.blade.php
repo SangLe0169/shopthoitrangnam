@@ -43,7 +43,8 @@
 								@endforeach
 								<img src="images/product-details/rating.png" alt="" />
 								<span>
-									<span>Giá: {{number_format($item->pro_Gia,0,',','.')}} đ</span><br>
+									<span>Giá: {{number_format($item->pro_Giamgia,0,',','.')}} đ</span><br>
+									<p style="text-decoration:line-through">{{number_format($item->pro_Gia,0,',','.')}} đ</p><br>
 									<p>Khuyến mãi: {{$item->pro_Khuyenmai}}</p><br>
 									<p>Còn hàng: @if($item->pro_Trangthai==1) Còn hàng @else Hết hàng @endif</p><br>
 									 Số lượng: <input type="text"  value="{{$item->pro_Soluong}}" /><br>

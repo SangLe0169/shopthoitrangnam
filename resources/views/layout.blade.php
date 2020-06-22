@@ -228,6 +228,22 @@
 			</div>
 		</div>
 	</section><!--/slider-->
+
+<form class="tree-most" id="form_order" method="get">
+<div class ="col-xs-12 nopadding-left pull-right" style="width: 200px;">
+	<label>Sắp xếp:</label>
+	
+<select id="orderby" class="orderby" style="width: 100px; float: right">
+  <option value="md" selected="selected">Mặc định</option>
+  <option value="desc">Mới nhất</option>
+  <option value="asc">Sản phẩm củ</option>
+  <option value="price_max" >Giá tăng dần</option>
+  <option value="price_min" >Giá giảm dần</option>
+</select>
+</div>
+</form>
+
+
 	
 	<section>
 		<div class="container">
@@ -538,6 +554,66 @@
   logged_out_greeting="Xin chào! Tôi giúp gì được cho bạn!">
       </div>-->
 <!-- Subiz -->
+
+<script>
+   $(function(){
+	   $('.orderby').change(function(){
+		   $("#form_order").submit();
+	   })
+   })
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+		$('.choose').on('change',function(){
+                 var action = $(this).attr('id');
+                 var ma_id = $(this).val();
+                 var _token = $('input[name="_token"]').val();
+                 var $result = '';
+        
+                if(action =='city'){
+                   result ='province';
+                }else{
+                    result ='wards';
+                }
+                $.ajax({
+                      url : '{{url('cart/seclect-delivery-home')}}',
+                      method: 'POST',
+                      data:{action:action,ma_id:ma_id,_token:_token},
+                      success:function(data){
+                          $('#'+result).html(data);
+                     }
+
+                  });
+             });
+	});
+
+</script>
+<script type="text/javascript">
+ $(document).ready(function(){
+	 $('.calculate_delivery').click(function(){
+          var matp = $('.city').val();
+		  var maqh =$('.province').val();
+		  var xaid = $('.wards').val();
+		  var _token = $('input[name="_token"]').val();
+		  if(matp == '' && maqh == '' && xaid == ''){
+			  alert('Hãy chọn tên thành phố');
+		  }else{
+			$.ajax({
+                      url : '{{url('cart/calculate-fee')}}',
+                      method: 'POST',
+                      data:{matp:matp,maqh:maqh,xaid:xaid,_token:_token},
+                      success:function(data){
+                          location.reload();
+                     }
+
+                  });
+				
+		  }
+		});
+ });
+</script>
 <script>
 	(function(s, u, b, i, z){
 	u[i]=u[i]||function(){

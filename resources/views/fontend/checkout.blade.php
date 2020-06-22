@@ -76,7 +76,14 @@
 			</div>
             <div class="row" id="total-price">
 				  <div class="col-md-12">
+				@if(Session::get('fee'))
+				
+				   <h3><a class="cart_quantity_delete" href="{{asset('cart/delete-fee' )}}"><i class="fa fa-times"></i></a>Phí vận chuyển: {{number_format(Session::get('fee'),0,',','.')}}đ</h3>
+				@endif
+			
 				      <h3>Tổng thanh toán: {{$total}} đ</h3>
+				
+		
 				  </div>
 				</div>
 
@@ -98,17 +105,44 @@
 								<span>
 									<label><input type="radio" class="input-radio" name="payment_method" checked="checked" > Thanh toán trực tiếp</label>
 								</span>
-								<span>
-								
-								
-								</span>
+							      
 								<span>
 									<button type="submit" class="btn btn-primary">Thanh toán</button>
                                 </span>
                     
 							</form>
-							
-							
+							<form method="post">
+      					{{csrf_field()}}
+        				<div class="form-group">
+      				  <label for="exampleInputName1">Chọn thành phố</label>
+         		 <select required name="city" id="city" class="form-control choose city">
+         			 <option value ="">--Chọn tỉnh thành phố--</option>
+       					 @foreach($thanhpho as $ci)
+             
+            				 <option value ="{{$ci->matp}}">{{$ci->name_city}}</option>
+       					 @endforeach
+  
+          			</select>
+         	 <label for="exampleInputName1">Chọn quận huyện</label>
+          	<select required name="province" id="province" class="form-control province choose">
+        
+             <option value ="">--Chọn quận huyện--</option>
+  
+          </select>
+          <label for="exampleInputName1">Chọn xã phường</label>
+          <select required name="wards" id="wards" class="form-control wards">
+        
+             <option value ="">--Chọn xã phường--</option>
+  
+          </select>
+         
+        </div>
+      
+		<input type="button" value="Tính phí vận chuyển" name="calculate_order" class="btn btn-primary calculate_delivery"></input>
+      </div>
+  	</form>
+
+											
 						</div>
 					</div>
 						

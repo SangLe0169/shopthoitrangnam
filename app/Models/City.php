@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class City extends Model
+{
+    //
+    protected $table ='vp_tinhthanhpho';
+    protected $primaryKey = 'matp';
+    protected $guarded = [];
+}

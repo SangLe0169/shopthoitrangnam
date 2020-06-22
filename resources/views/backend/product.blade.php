@@ -118,6 +118,7 @@
             <th>Mã sản phẩm</th>
             <th>Tên sản phẩm</th>
             <th>Thương hiệu</th>
+            <th>Số lượng</th>
             <th>Giá</th>
             <th>Hình ảnh</th>
             <th>Danh mục</th>
@@ -132,6 +133,7 @@
             <td>{{$product->pro_id}}</td>
             <td>{{$product->pro_Tensanpham}}</td>
             <td>{{$product->brand_name}}</td>
+            <td>{{$product->pro_Soluong}}</td>
             <td>{{number_format($product->pro_Gia,0,',','.')}}VND</td>
             <td>
               <img width="200px" src="{{asset('storage/app/avatar/'.$product->pro_Hinhanh)}}" class="thumbnail">

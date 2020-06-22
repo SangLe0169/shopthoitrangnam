@@ -21,7 +21,13 @@
    </p>
    <tbody>
    <table>
-                    @foreach($cart as $item)
+   <tr>
+      <td><strong> Tên sản phẩm</strong></td>
+	  <td><strong> Giá</strong></td>
+	  <td><strong> Số lượng</strong></td>
+	  <td><strong> Thành tiền</strong></td>
+   </tr>
+                    @foreach($giohang as $item)
 						<tr>
                         <td class="cart_product">
 								<a href=""><img src="{{asset('storage/app/avatar/' .$item->options->img)}}" style="width:50px;height:70px;" alt=""></a>
@@ -34,11 +40,7 @@
 								<p>{{number_format($item->price,0,',','.')}} đ</p>
 							</td>
 							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-		
-									<input class="cart_quantity_input" type="number" name="quantity" value="{{$item->qty}}" autocomplete="off" size="2" onchange="updateCart(this.value,'{{$item->rowId}}')">
-	
-								</div>
+								{{$item->qty}}
 							</td>
 							<td class="cart_total">
 								<p class="cart_total_price">{{number_format($item->price*$item->qty,0,',','.')}} đ</p>
@@ -55,6 +57,9 @@
             <div class="row" id="total-price">
 				  <div class="col-md-12">
 				      <h3>Tổng thanh toán: {{$total}} đ</h3>
+					  @if(Session::get('fee'))
+					     <h3>Phí vận chuyển: {{number_format(Session::get('fee'),0,',','.')}}đ</h3>
+					  @endif
 				  </div>
 				</div>
    
