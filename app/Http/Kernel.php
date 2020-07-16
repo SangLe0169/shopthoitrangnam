@@ -14,6 +14,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
+        //\App\Http\Middleware\LoginAdmin::class,
         \App\Http\Middleware\TrustProxies::class,
         \App\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
@@ -41,6 +42,9 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        // 'LoginAdmin' => [
+        //     'LoginAdmin' => \App\Http\Middleware\LoginAdmin::class,
+        // ]
     ];
 
     /**
@@ -51,8 +55,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'CheckLogedIn' => \App\Http\Middleware\CheckLogedIn::class,
-        'CheckLogedOut' => \App\Http\Middleware\CheckLogedOut::class,
+        'LoginAdmin' => \App\Http\Middleware\LoginAdmin::class,
         'auth' =>  \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,

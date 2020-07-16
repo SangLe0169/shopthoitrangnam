@@ -14,4 +14,8 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\Comment','com_product','com_id');
     }
+    public function attributes()
+    {
+        return $this->hasMany('App\Models\Attributes','size_product');
+    }
 }

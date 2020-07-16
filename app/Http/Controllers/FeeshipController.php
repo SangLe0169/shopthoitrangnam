@@ -29,6 +29,19 @@ class FeeshipController extends Controller
     }
     public function postDelivery(Request $request)
     {
+        $this->validate($request,
+            [
+                'city' =>'required|unique:fee_matp',
+                'province' => 'required|unique:fee_maqh',
+                'wards'=>'required| unique:fee_xaid',
+               
+            ],
+            [
+                'city.unique' => 'Mã thành phố đã them trước đó',
+                'province.unique' => 'Mã tỉnh đã them trước đó',
+                'wards.unique' => 'Mã xã đã them trước đó',
+            ]
+        );
         $data = $request->all();
         if($data['action']){
             $output = '';

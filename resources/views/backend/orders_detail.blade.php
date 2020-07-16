@@ -10,13 +10,13 @@
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
-        <select class="input-sm form-control w-sm inline v-middle">
+        <!-- <select class="input-sm form-control w-sm inline v-middle">
           <option value="0">Bulk action</option>
           <option value="1">Delete selected</option>
           <option value="2">Bulk edit</option>
           <option value="3">Export</option>
         </select>
-        <button class="btn btn-sm btn-default">Apply</button>                
+        <button class="btn btn-sm btn-default">Apply</button>                 -->
       </div>
       <div class="col-sm-4">
       </div>
@@ -31,11 +31,11 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
+            <!-- <th style="width:20px;">
               <label class="i-checks m-b-none">
                 <input type="checkbox"><i></i>
               </label>
-            </th>
+            </th> -->
             <th>Mã hóa đơn</th>
             <th>Tên sản phẩm</th>
             <th>Số lượng kho</th>
@@ -53,7 +53,7 @@
      @foreach($order_detail->all() as  $order)
           <tr class="color_qty_{{$order->pro_id}}">
           
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
             <td>{{$order->detail_Order}}</td>
             <td>{{$order->pro_Tensanpham}}</td>
             <td>{{$order->pro_Soluong}}</td>
@@ -62,11 +62,11 @@
             <input type="hidden" name="order_qty_storage" class="order_qty_storage_{{$order->pro_id}}" value="{{$order->pro_Soluong}}">
             <input type="hidden" name="order_code" class="order_code" value="{{$order->or_code}}">
             <input type="hidden" name="order_checkout_quantity" class="order_checkout_quantity" value="{{$order->pro_id}}">
-            @if($order_status!=2)
+            <!-- @if($order_status!=2)
                <button class ="btn btn-default update_quantity_order" data-product_id="{{$order->pro_id}}" name ="update_quantity_order">Cập nhật</button>
-            @endif
+            @endif -->
             </td>
-        
+          
               <td>{{$order->size_name}}</td>
        
             <td>{{number_format($order->detail_Đonvigia,0,',','.')}} VNĐ</td>
@@ -75,6 +75,7 @@
          
           </tr>
         @endforeach
+       
         <tr>
             <td colspan="6">
           @foreach($orders as $or)
@@ -115,8 +116,10 @@
     @endforeach
             </td>
         </tr>
+
         </tbody>
       </table>
+  
       <a href="{{url('admin/orders/print_order/' .$order->or_code)}}">In đơn hàng</a>
         
 

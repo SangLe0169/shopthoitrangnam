@@ -16,8 +16,8 @@
 		<div class="container" style="width: 850px;">
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Shopping Cart</li>
+				  <li><a href="#">Trang chủ</a></li>
+				  <li class="active">Giỏ hàng</li>
 				</ol>
 			</div>
 			<div class="table-responsive cart_info">
@@ -41,10 +41,10 @@
 							</td>
 							<td class="cart_description">
 								<h4><a href="">{{$item->name}}</a></h4>
-								<p>Web ID: 1089772</p>
+								
 							</td>
 							<td class="cart_price">
-								<p>{{number_format($item->price,0,',','.')}} đ</p>
+								<p>{{number_format($item->price,0,',','.')}} $</p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
@@ -67,8 +67,9 @@
 			</div>
 			<div class="row" id="total-price">
 				  <div class="col-md-12">
-				      <h3>Tổng thanh toán: {{$total}} đ</h3>
+				      <h3>Tổng thanh toán: {{$total}} $</h3>
 					  <a href="{{asset('/trangchu')}}" type="submit" class="btn btn-warning">Tiếp tục mua hàng</a>
+					  <a href="{{asset('cart/checkout')}}" class="btn btn-warning" type="submit">Thanh toán</a>
 					  <a href="{{asset('cart/delete/all')}}" type="submit" class="btn btn-danger">Xóa hết</a>
 				  </div>
 				</div>
@@ -77,22 +78,10 @@
 
 	<section id="do_action">
 		<div class="container" style="width: 945px;">
-			<div class="heading">
-				<h3>What would you like to do next?</h3>
-				<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
-			</div>
-			<div class="row">
-				<div class="col-sm-6">
-					<div class="total_area">
-						<ul>
-							<li>Cart Sub Total <span>$59</span></li>
-							<li>Eco Tax <span>$2</span></li>
-							<li>Shipping Cost <span>Free</span></li>
-							<li>Total <span>$61</span></li>
-						</ul>
-							<a class="btn btn-default update" href="">Update</a>
+		
 						
-							<a class="btn btn-default check_out" href="{{asset('cart/checkout')}}">Check Out</a>
+						
+			<!-- <a class="btn btn-default check_out" href="{{asset('cart/checkout')}}">Check Out</a> -->
 				
 					</div>
 				</div>

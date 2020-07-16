@@ -74,46 +74,26 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="{{asset('/trangchu')}}"><img src="{{('public/fontend/image/logo.png')}}" alt="" /></a>
+							<a href="{{asset('/trangchu')}}"><img src="{{('public/fontend/image/logo-thoi-trang(9).jpg')}}" width="100px" height="100px" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
-								</ul>
-							</div>
 							
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
-								</ul>
-							</div>
+							
+							
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="{{URL::to('/cart/show')}}"><i class="fa fa-shopping-cart"></i>{{Cart::count()}} Cart</a></li>
+								<li><a href="{{URL::to('cart/checkout')}}"><i class="fa fa-crosshairs"></i> Đặt hàng</a></li>
+								<li><a href="{{URL::to('/cart/show')}}"><i class="fa fa-shopping-cart"></i>{{Cart::count()}} Giỏ hàng</a></li>
 								@if(Auth::check())
 								<li><a href=""><i class="fa fa-lock"></i>Chào bạn: {{Auth::user()->name}}</a></li>
-								<li><a href="{{route('logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
+								<li><a href="{{route('logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
 								@else
-								<li class="dropdown"><a  href="{{route('login')}}" ><i class="fa fa-angle-down"></i> Login</a>
+								<li class="dropdown"><a  href="{{route('login')}}" ><i class="fa fa-angle-down"></i> Đăng nhập</a>
 								  <ul role="menu" class="sub-menu">
-                                        <li><a href="{{route('signin')}}">Sign in</a></li>
+                                        <li><a href="{{route('signin')}}">Đăng ký</a></li>
 				
                                     </ul>
 								</li>
@@ -139,24 +119,22 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="{{URL::to('/trangchu')}}" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+								<li><a href="{{URL::to('/trangchu')}}" class="active">Trang chủ</a></li>
+								<li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="{{URL::to('/cart/show')}}">{{Cart::count()}}</a></li> 
-										<li><a href="login.html">Login</a></li> 
+									@foreach($categories as $cates)
+                                        <li><a href="{{asset('/danhsachsanpham/' .$cates->cate_id. '/' .$cates->cate_slug.'.html')}}">{{$cates->cate_name}}</a></li>
+									@endforeach
+	
+									
+
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
+								<li class="dropdown"><a href="{{URL::to('/blog')}}">Tin tức<i class="fa fa-angle-down"></i></a>
+                                   
                                 </li> 
-								<li><a href="404.html">404</a></li>
-								<li><a href="contact-us.html">Contact</a></li>
+							
+								<li><a href="{{URL::to('/contact')}}">Liên hệ</a></li>
 							</ul>
 						</div>
 					</div>
@@ -169,7 +147,7 @@
     width: 206px;">
 					   </div>
 					   <div class="input-group-btn">
-					   <button class="btn btn-default" type="submit" style="height: 34px;"></button>
+					   <button class="btn btn-default" type="submit" style="height: 34px;"><i class="fa fa-search" aria-hidden="true"></i></button>
 					   <div>
 					</div>
 					</form>
@@ -229,19 +207,7 @@
 		</div>
 	</section><!--/slider-->
 
-<form class="tree-most" id="form_order" method="get">
-<div class ="col-xs-12 nopadding-left pull-right" style="width: 200px;">
-	<label>Sắp xếp:</label>
-	
-<select id="orderby" class="orderby" style="width: 100px; float: right">
-  <option value="md" selected="selected">Mặc định</option>
-  <option value="desc">Mới nhất</option>
-  <option value="asc">Sản phẩm củ</option>
-  <option value="price_max" >Giá tăng dần</option>
-  <option value="price_min" >Giá giảm dần</option>
-</select>
-</div>
-</form>
+
 
 
 	
@@ -250,7 +216,7 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<div class="left-sidebar">
-						<h2>Category</h2>
+						<h2>Danh mục sản phẩm</h2>
 					
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 						@foreach($categories as $cate)
@@ -281,27 +247,19 @@
 						</div><!--/category-products-->
 					
 						<div class="brands_products"><!--brands_products-->
-							<h2>Brands</h2>
+							<h2>Thương hiệu</h2>
 							<div class="brands-name">
 								<ul class="nav nav-pills nav-stacked">
 								   @foreach($vp_brand as $pr)
-									<li><a href="{{asset('/thuonghieu/' .$pr->brand_id)}}"> <span class="pull-right">(50)</span>{{$pr->brand_name}}</a></li>
+									<li><a href="{{asset('/thuonghieu/' .$pr->brand_id)}}"> <span class="pull-right"></span>{{$pr->brand_name}}</a></li>
 									@endforeach
 								</ul>
 							</div>
 						</div><!--/brands_products-->
 						
-						<div class="price-range"><!--price-range-->
-							<h2>Price Range</h2>
-							<div class="well text-center">
-								 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-								 <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
-							</div>
-						</div><!--/price-range-->
 						
-						<div class="shipping text-center"><!--shipping-->
-							<img src="{{('public/fontend/image/shipping.jpg')}}" alt="" />
-						</div><!--/shipping-->
+						
+						
 					
 					</div>
 				</div>
@@ -346,70 +304,15 @@
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="companyinfo">
-							<h2><span>e</span>-shopper</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+							<h2><span>e</span>-shopper-man</h2>
+							<p>Xin cám ơn tất cả khách hàng đã luôn ủng hộ shop của tôi</p>
 						</div>
 					</div>
 					<div class="col-sm-7">
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="images/home/iframe1.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
-							</div>
-						</div>
 						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="images/home/iframe2.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
-							</div>
-						</div>
 						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="images/home/iframe3.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
-							</div>
-						</div>
 						
-						<div class="col-sm-3">
-							<div class="video-gallery text-center">
-								<a href="#">
-									<div class="iframe-img">
-										<img src="images/home/iframe4.png" alt="" />
-									</div>
-									<div class="overlay-icon">
-										<i class="fa fa-play-circle-o"></i>
-									</div>
-								</a>
-								<p>Circle of Hands</p>
-								<h2>24 DEC 2014</h2>
-							</div>
-						</div>
+					
 					</div>
 					<div class="col-sm-3">
 						<div class="address">
@@ -424,64 +327,43 @@
 		<div class="footer-widget">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-2">
+					<div class="col-sm-4">
 						<div class="single-widget">
-							<h2>Service</h2>
+							<h2>Dịch vụ</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Online Help</a></li>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Order Status</a></li>
-								<li><a href="#">Change Location</a></li>
-								<li><a href="#">FAQ’s</a></li>
+							
+								<li><a href="#">Liên hệ</a></li>
+								<li><a href="#">Tin tức</a></li>
+								
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-2">
+					<div class="col-sm-4">
 						<div class="single-widget">
-							<h2>Quock Shop</h2>
+							<h2>Cửa hàng</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">T-Shirt</a></li>
-								<li><a href="#">Mens</a></li>
-								<li><a href="#">Womens</a></li>
-								<li><a href="#">Gift Cards</a></li>
-								<li><a href="#">Shoes</a></li>
+								<li><a href="#">Áo thun nam</a></li>
+								<li><a href="#">Áo sơ mi nam</a></li>
+								<li><a href="#">Quần jean nam</a></li>
+								<li><a href="#">Quần tây nam</a></li>
+							
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-2">
+					
+					<div class="col-sm-4">
 						<div class="single-widget">
-							<h2>Policies</h2>
+							<h2>Giới thiệu cửa hàng</h2>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Terms of Use</a></li>
-								<li><a href="#">Privecy Policy</a></li>
-								<li><a href="#">Refund Policy</a></li>
-								<li><a href="#">Billing System</a></li>
-								<li><a href="#">Ticket System</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-sm-2">
-						<div class="single-widget">
-							<h2>About Shopper</h2>
-							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Company Information</a></li>
-								<li><a href="#">Careers</a></li>
-								<li><a href="#">Store Location</a></li>
-								<li><a href="#">Affillate Program</a></li>
+								<li>website bán shop thời trang nam</li>
+								<li><a href="#">Địa chỉ: Trần Văn Ơn, Phú Hoà, Thủ Dầu Một, Bình Dương</a></li>
+								<li><a href="#">Số điện thoại : 0377 4111 30</a></li>
+								<li><a href="#">Email: lesang0169@gmail.com</a></li>
 								<li><a href="#">Copyright</a></li>
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3 col-sm-offset-1">
-						<div class="single-widget">
-							<h2>About Shopper</h2>
-							<form action="#" class="searchform">
-								<input type="text" placeholder="Your email address" />
-								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-								<p>Get the most recent updates from <br />our site and be updated your self...</p>
-							</form>
-						</div>
-					</div>
+					
 					
 				</div>
 			</div>
@@ -490,8 +372,8 @@
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
-					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+					<p class="pull-left">Copyright © 2020 E-SHOPPER Inc. All rights reserved.</p>
+					<p class="pull-right">Thiết kế bởi <span><a target="_blank" href="#">Sang Lê</a></span></p>
 				</div>
 			</div>
 		</div>
@@ -524,6 +406,9 @@
 		   });
 
 
+		</script>
+		<script>
+		  
 		</script>
 	
 	<!--<style>.fb-livechat, .fb-widget{display: none}.ctrlq.fb-button, .ctrlq.fb-close{position: fixed; right: 24px; cursor: pointer}.ctrlq.fb-button{z-index: 999; background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDEyOCAxMjgiIGhlaWdodD0iMTI4cHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMjggMTI4IiB3aWR0aD0iMTI4cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnPjxyZWN0IGZpbGw9IiMwMDg0RkYiIGhlaWdodD0iMTI4IiB3aWR0aD0iMTI4Ii8+PC9nPjxwYXRoIGQ9Ik02NCwxNy41MzFjLTI1LjQwNSwwLTQ2LDE5LjI1OS00Niw0My4wMTVjMCwxMy41MTUsNi42NjUsMjUuNTc0LDE3LjA4OSwzMy40NnYxNi40NjIgIGwxNS42OTgtOC43MDdjNC4xODYsMS4xNzEsOC42MjEsMS44LDEzLjIxMywxLjhjMjUuNDA1LDAsNDYtMTkuMjU4LDQ2LTQzLjAxNUMxMTAsMzYuNzksODkuNDA1LDE3LjUzMSw2NCwxNy41MzF6IE02OC44NDUsNzUuMjE0ICBMNTYuOTQ3LDYyLjg1NUwzNC4wMzUsNzUuNTI0bDI1LjEyLTI2LjY1N2wxMS44OTgsMTIuMzU5bDIyLjkxLTEyLjY3TDY4Ljg0NSw3NS4yMTR6IiBmaWxsPSIjRkZGRkZGIiBpZD0iQnViYmxlX1NoYXBlIi8+PC9zdmc+) center no-repeat #0084ff; width: 60px; height: 60px; text-align: center; bottom: 30px; border: 0; outline: 0; border-radius: 60px; -webkit-border-radius: 60px; -moz-border-radius: 60px; -ms-border-radius: 60px; -o-border-radius: 60px; box-shadow: 0 1px 6px rgba(0, 0, 0, .06), 0 2px 32px rgba(0, 0, 0, .16); -webkit-transition: box-shadow .2s ease; background-size: 80%; transition: all .2s ease-in-out}.ctrlq.fb-button:focus, .ctrlq.fb-button:hover{transform: scale(1.1); box-shadow: 0 2px 8px rgba(0, 0, 0, .09), 0 4px 40px rgba(0, 0, 0, .24)}.fb-widget{background: #fff; z-index: 1000; position: fixed; width: 360px; height: 435px; overflow: hidden; opacity: 0; bottom: 0; right: 24px; border-radius: 6px; -o-border-radius: 6px; -webkit-border-radius: 6px; box-shadow: 0 5px 40px rgba(0, 0, 0, .16); -webkit-box-shadow: 0 5px 40px rgba(0, 0, 0, .16); -moz-box-shadow: 0 5px 40px rgba(0, 0, 0, .16); -o-box-shadow: 0 5px 40px rgba(0, 0, 0, .16)}.fb-credit{text-align: center; margin-top: 8px}.fb-credit a{transition: none; color: #bec2c9; font-family: Helvetica, Arial, sans-serif; font-size: 12px; text-decoration: none; border: 0; font-weight: 400}.ctrlq.fb-overlay{z-index: 0; position: fixed; height: 100vh; width: 100vw; -webkit-transition: opacity .4s, visibility .4s; transition: opacity .4s, visibility .4s; top: 0; left: 0; background: rgba(0, 0, 0, .05); display: none}.ctrlq.fb-close{z-index: 4; padding: 0 6px; background: #365899; font-weight: 700; font-size: 11px; color: #fff; margin: 8px; border-radius: 3px}.ctrlq.fb-close::after{content: "X"; font-family: sans-serif}.bubble{width: 20px; height: 20px; background: #c00; color: #fff; position: absolute; z-index: 999999999; text-align: center; vertical-align: middle; top: -2px; left: -5px; border-radius: 50%;}.bubble-msg{width: 120px; left: -140px; top: 5px; position: relative; background: rgba(59, 89, 152, .8); color: #fff; padding: 5px 8px; border-radius: 8px; text-align: center; font-size: 13px;}</style><div class="fb-livechat"> <div class="ctrlq fb-overlay"></div><div class="fb-widget"> <div class="ctrlq fb-close"></div><div class="fb-page" data-href="https://www.facebook.com/quanlyshopthoitrang" data-tabs="messages" data-width="360" data-height="400" data-small-header="true" data-hide-cover="true" data-show-facepile="false"> </div><div class="fb-credit"> <a href="https://thanhtrungmobile.vn" target="_blank" rel="sponsored">Powered by TT</a> </div><div id="fb-root"></div></div><a href="https://m.me/quanlyshopthoitrang" title="Gửi tin nhắn cho chúng tôi qua Facebook" class="ctrlq fb-button"> <div class="bubble">1</div><div class="bubble-msg">Bạn cần hỗ trợ?</div></a></div><script src="https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script>jQuery(document).ready(function($){function detectmob(){if( navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/webOS/i) || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/Windows Phone/i) ){return true;}else{return false;}}var t={delay: 125, overlay: $(".fb-overlay"), widget: $(".fb-widget"), button: $(".fb-button")}; setTimeout(function(){$("div.fb-livechat").fadeIn()}, 8 * t.delay); if(!detectmob()){$(".ctrlq").on("click", function(e){e.preventDefault(), t.overlay.is(":visible") ? (t.overlay.fadeOut(t.delay), t.widget.stop().animate({bottom: 0, opacity: 0}, 2 * t.delay, function(){$(this).hide("slow"), t.button.show()})) : t.button.fadeOut("medium", function(){t.widget.stop().show().animate({bottom: "30px", opacity: 1}, 2 * t.delay), t.overlay.fadeIn(t.delay)})})}});</script>-->

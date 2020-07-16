@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class VpUser extends Migration
+class VpUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class VpUser extends Migration
      */
     public function up()
     {
-        Schema::create('vp_user', function (Blueprint $table) {
+        Schema::create('vp_users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('email');
             $table->string('password');
@@ -30,6 +30,6 @@ class VpUser extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vp_user');
+        Schema::dropIfExists('vp_users');
     }
 }

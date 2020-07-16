@@ -33,12 +33,18 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form class="login100-form validate-form" method="post">
+				<form action="{{URL::to('admin/home')}}" class="login100-form validate-form" method="post">
 				{{csrf_field()}}
 					<span class="login100-form-title p-b-33">
 						Đăng nhập
 					</span>
-					@include('errors.note')
+					<?php
+					$message = Session::get('message');
+					if($message){
+						echo '<span class="alert alert-danger">'.$message.'</span>';
+						Session::put('message',null);
+					}
+					?> 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" value="{{old('email')}}"  placeholder="Email">
 						<span class="focus-input100-1"></span>

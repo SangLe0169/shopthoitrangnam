@@ -23,6 +23,8 @@ Route::get('/search','HomeController@getSearch');
 Route::get('/carts','HomeController@getCart');
 Route::get('/contact','HomeController@getContact');
 Route::post('/contact','HomeController@postContact');
+Route::get('/blog','HomeController@getBlog');
+Route::get('/blog_detail/{id}','HomeController@getBlogdetail');
 Route::group(['prefix' => 'cart'], function () {
     Route::get('add/{id}','CartController@getAddCart');
     Route::get('show','CartController@getShow');
@@ -30,6 +32,7 @@ Route::group(['prefix' => 'cart'], function () {
     Route::get('update','CartController@getUpdate');
     Route::get('checkout','CartController@getCheckout');
     Route::post('checkout','CartController@postCheckout');
+    Route::post('postcheckout','CartController@postPay');
     Route::post('seclect-delivery-home','CartController@postDelivery');
     Route::post('calculate-fee','CartController@postCalculate');
     Route::get('delete-fee','CartController@getDelfee');
@@ -73,13 +76,13 @@ Route::get('dangxuat',[
 
 
 Route::group(['namespace' => 'Admin'], function () {
-    Route::group(['prefix'=>'login','middleware'=>'CheckLogedIn'],function(){
-           Route::get('/','LoginController@getLogin');
-           Route::post('/','LoginController@postLogin');
-    });
-    Route::get('logout','HomeController@getLogout');
-    Route::group(['prefix' => 'admin','middleware'=>'CheckLogedOut'], function () {
-        Route::get('home', 'HomeController@getHome');
+    
+   // Route::get('logout','HomeController@getLogout');
+    Route::group(['prefix' => 'admin'], function () {
+        Route::get('/login','LoginController@getLogin');
+        Route::get('/home', 'LoginController@getHome')->middleware("LoginAdmin");
+        Route::get('/logout', 'LoginController@getLogout');
+        Route::post('/home', 'LoginController@postLogin');
 
         Route::group(['prefix' => 'category'], function () {
             Route::get('/','CategoryController@getCate');
@@ -125,6 +128,7 @@ Route::group(['namespace' => 'Admin'], function () {
             
             Route::post('/update-order-quantity','OrdersController@post_Update_quantity');
             Route::post('/update-qty','OrdersController@post_Update_Qty');
+            Route::get('/delete-oder/{id}','OrdersController@del_Oder');
             
             //Route::get('detail/{detail_Order}','OrdersController@view_order');
             Route::get('/print_order/{checkout_code}','OrdersController@getPrint_order');

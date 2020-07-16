@@ -10,13 +10,13 @@
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
-        <select class="input-sm form-control w-sm inline v-middle">
+        <!-- <select class="input-sm form-control w-sm inline v-middle">
           <option value="0">Bulk action</option>
           <option value="1">Delete selected</option>
           <option value="2">Bulk edit</option>
           <option value="3">Export</option>
         </select>
-        <button class="btn btn-sm btn-default">Apply</button>                
+        <button class="btn btn-sm btn-default">Apply</button>                 -->
       </div>
       <div class="col-sm-4">
       </div>
@@ -31,11 +31,11 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
+            <!-- <th style="width:20px;">
               <label class="i-checks m-b-none">
                 <input type="checkbox"><i></i>
               </label>
-            </th>
+            </th> -->
             <th>Mã đơn hàng</th>
             <th>Họ khách hàng</th>
             <th>Ten khách hàng</th>
@@ -51,7 +51,7 @@
      @foreach($orders->all() as $order)
           <tr>
           
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
             <td>{{$order->or_id}}</td>
             <td>{{$order->cus_Hokhachhang}}</td>
             <td>{{$order->cus_Tenkhachhang}}</td>
@@ -66,7 +66,7 @@
          
   
 
-      <a onclick="return confirm('Bạn có muốn xóa không!')" href="" type="button" class="btn btn-danger"  data-target="#exampleModal">
+      <a onclick="return confirm('Bạn có muốn xóa không!')" href="{{URL::to('/admin/orders/delete-oder/' .$order->or_id )}}" type="button" class="btn btn-danger"  data-target="#exampleModal">
               <i class="fas fa-backspace"></i>
         
       </a>
@@ -83,17 +83,17 @@
       <div class="row">
         
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          <small class="text-muted inline m-t-sm m-b-sm"></small>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
-          <ul class="pagination pagination-sm m-t-none m-b-none">
+          <!-- <ul class="pagination pagination-sm m-t-none m-b-none">
             <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
             <li><a href="">1</a></li>
             <li><a href="">2</a></li>
             <li><a href="">3</a></li>
             <li><a href="">4</a></li>
             <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </footer>

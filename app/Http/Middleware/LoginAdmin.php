@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
 
-class CheckLogedIn
+class LoginAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,8 +15,10 @@ class CheckLogedIn
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()){
-            return redirect()->intended('admin/home');
+        if(!session()->has('user_id')){
+          
+            return redirect()->intended('admin/login');
+            
         }
         return $next($request);
     }

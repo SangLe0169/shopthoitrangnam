@@ -1,12 +1,12 @@
 @extends('backend.dashboard')
-@section('title','Trang bài viết')
+@section('title','Trang chi tiết bài viết')
 @section('contend')
 <section id="main-content">
 	<section class="wrapper">
 		<div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Bài viết
+     Chi tiết bài viết
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
@@ -42,12 +42,10 @@
       <form method="post" enctype="multipart/form-data">
       {{csrf_field()}}
         <div class="form-group">
-      
+           <label for="exampleInputName1">Mã bài viết</label>
+          <input required type="number" name='mabaiviet' class="form-control" value="" id="exampleInputName"  aria-describedby="nameHelp">
           <label for="exampleInputName1">Tiêu đề bài viết</label>
           <input required type="text" name='tieude' class="form-control" id="exampleInputName"  aria-describedby="nameHelp">
-          
-        
-
           <label for="exampleInputName1">Nội dung</label>
           <textarea class="ckeditor" required name="description"></textarea>
           <script type="text/javascript">
@@ -74,10 +72,7 @@
           <input required id="img" type="file" name="img" class="form-control hidden" onchange="changeImg(this)">
 		     <img id="avatar" class="thumbnail" width="300px" src="../backend/image/new_seo-10-512.png">
          
-         <label for="exampleInputName1">Ngay tao</label>
-          <input required type="date" name='date' class="form-control" id="exampleInputName"  aria-describedby="nameHelp">
         </div>
-   
       
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i></button>
@@ -100,38 +95,37 @@
                 <input type="checkbox"><i></i>
               </label>
             </th> -->
-            <th>Ma bai viet</th>
+            <th>Ma bài viết</th>
             <th>Tieu de bai viet</th>
             <th>Nội dung</th>
             <th>Nội dung chi tiết</th>
             <th>Hình ảnh</th>
-            <th>Ngay tạo</th>
             
             <th style="width:30px;"></th>
             <th>Tùy chọn</th>
           </tr>
         </thead>
         <tbody>
-        @foreach($poslist as $pos)
+        @foreach($posdetail as $pd)
           <tr>
-<!--           
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
-            <td>{{$pos->pos_id}}</td>
-            <td>{{$pos->pos_Tieudebaiviet}}</td>
-             <td>{{$pos->pos_content}}</td>
-             <td>{{$pos->pos_content_detail}}</td>
-             <td><img width="200px" src="{{asset('storage/app/avatar/'.$pos->pos_image)}}" class="thumbnail"></td>
-            <td>{{$pos->pos_Ngaytao}}</td>
+          
+            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
+            <td>{{$pd->posts_id}}</td>
+            <td>{{$pd->pos_title}}</td>
+            <td>{{$pd->pos_content}}</td>
+            <td>{{$pd->pos_content_detail}}</td>
+            <td> <img width="200px" src="{{asset('storage/app/avatar/'.$pd->pos_image)}}" class="thumbnail"></td>
+            
            
             <td><span class="text-ellipsis"></span></td>
             <td>
-            <a href="{{asset('admin/posts/edit/'.$pos->pos_id)}}"  class="btn btn-success" > <i class="fas fa-tools"></i>
+            <a href="{{asset('admin/posts_detail/edit/'.$pd->pos_detail)}}"  class="btn btn-success" > <i class="fas fa-tools"></i>
   
 </a>
          
   
 
-      <a onclick="return confirm('Bạn có muốn xóa không!')" href="{{asset('admin/posts/delete/'.$pos->pos_id)}}" type="button" class="btn btn-danger"  data-target="#exampleModal">
+      <a onclick="return confirm('Bạn có muốn xóa không!')" href="" type="button" class="btn btn-danger"  data-target="#exampleModal">
       <i class="fas fa-backspace"></i>
         
       </a>
@@ -146,7 +140,7 @@
       <div class="row">
         
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm"></small>
+          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <!-- <ul class="pagination pagination-sm m-t-none m-b-none">

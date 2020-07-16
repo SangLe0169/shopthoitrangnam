@@ -8,6 +8,8 @@ use App\Models\Slide;
 use App\Models\Comment;
 use App\Models\Brand;
 use App\Models\Size;
+use App\Models\Attributes;
+use App\Models\Posts;
 use Mail;
 use Auth;
 use DB;
@@ -29,6 +31,25 @@ class HomeController extends Controller
         $data['promotion'] = Product::where('pro_Khuyenmai',1)->orderBy('pro_id','desc')->take(3)->get();
         return view('fontend.home',$data)->with(compact('meta_desc','meta_keywords','meta_title','url_canonical'));
     }
+    public function getBlog(Request $request)
+    {
+        $meta_desc ='';
+        $meta_keywords='';
+        $meta_title ='';
+        $url_canonical = $request->url();
+        $data['blog'] = Posts::all();
+        return view('fontend.blog',$data)->with(compact('meta_desc','meta_keywords','meta_title','url_canonical'));
+    }
+    public function getBlogdetail(Request $request,$id)
+    {
+        $meta_desc ='';
+        $meta_keywords='';
+        $meta_title ='';
+        $url_canonical = $request->url();
+        $data['blogs'] = Posts::find($id);
+        return view('fontend.blog_detail',$data)->with(compact('meta_desc','meta_keywords','meta_title','url_canonical'));
+    }
+    
     public function chitietsanpham(Request $request,$id)
     {
         $meta_desc ='';
@@ -46,16 +67,17 @@ class HomeController extends Controller
               ->select('vp_product.*','vp_brand.*')
               ->where(['vp_product.pro_id'=>$id])
               ->get();
-        $data['sizes'] = DB::table('vp_product')
-              ->join('vp_sizes','vp_product.pro_Kichthuoc','=','vp_sizes.size_id')
-              ->select('vp_product.*','vp_sizes.*')
-              ->where(['vp_product.pro_id'=>$id])
-              ->get();
+        // $data['sizes'] = DB::table('vp_product')
+        //       ->join('vp_sizes','vp_product.pro_Kichthuoc','=','vp_sizes.size_id')
+        //       ->select('vp_product.*','vp_sizes.*')
+        //       ->where(['vp_product.pro_id'=>$id])
+        //       ->get();
        $detail_product = DB::table('vp_product')
               ->join('categories','vp_product.pro_cate','=','categories.cate_id')
               ->select('vp_product.*','categories.*')
               ->where(['vp_product.pro_id'=>$id])
               ->get();
+
         foreach($detail_product as $value){
             $cate_id =$value->cate_id;
         }
@@ -65,12 +87,17 @@ class HomeController extends Controller
               ->where(['categories.cate_id'=>$cate_id])
               ->whereNotIn('vp_product.pro_id',[$id])
               ->get();
-        
+        $motion = DB::table('vp_product')
+              ->join('vp_promotions','vp_product.pro_promotion','=','vp_promotions.prom_id')
+              ->select('vp_product.*','vp_promotions.*')
+              ->where(['vp_product.pro_id'=>$id])
+              ->get();
         $data['item'] = Product::find($id);
         $data['sizes'] = Size::all();
+        //$productDetails = Product::with('attributes')->where(['pro_id'=>$id])->first();
        
         $data['brand'] = Brand::where('brand_status',1)->orderBy('brand_id','desc')->get();
-        return view('fontend.detail_product',$data,['comment'=>$comment],['detail_product'=>$detail_product])->with(compact('meta_desc','meta_keywords','meta_title','url_canonical'));;
+        return view('fontend.detail_product',$data,['comment'=>$comment],['detail_product'=>$detail_product])->with(compact('meta_desc','meta_keywords','meta_title','url_canonical','motion'));;
     }
     
     public function list_product(Request $request,$id,$slug)
@@ -171,6 +198,7 @@ class HomeController extends Controller
                $message->to('lesang0169@gmail.com');
                $message->subject($data['subject']);
         });
+        return back();
     }
 
 }

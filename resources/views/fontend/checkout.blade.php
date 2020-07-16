@@ -16,8 +16,8 @@
 		<div class="container"  style="width: 850px;">
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Check out</li>
+				  <li><a href="#">Trang chủ</a></li>
+				  <li class="active">Thanh toán</li>
 				</ol>
 			</div><!--/breadcrums-->
 
@@ -91,8 +91,10 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="shopper-info">
+
+						
 							<p>Thông tin khách hàng</p>
-							<form method="post" >
+							<form method="post">
 							{{csrf_field()}}
                                   <input required type="text" placeholder="Họ đệm"  name="hodem">
                                   <input required type="text" placeholder="Tên" name="ten">
@@ -103,11 +105,11 @@
 									@endif
                                     <textarea required name="message" placeholder="Ghi chú" rows="16"></textarea>
 								<span>
-									<label><input type="radio" class="input-radio" name="payment_method" checked="checked" > Thanh toán trực tiếp</label>
+									<label><input type="radio" class="input-radio" name="payment_method" value="COD" checked="checked" > Thanh toán trực tiếp</label>
 								</span>
 							      
 								<span>
-									<button type="submit" class="btn btn-primary">Thanh toán</button>
+									<button type="submit" class="btn btn-primary">Thanh toán trực tiếp</button></br>
                                 </span>
                     
 							</form>
@@ -139,30 +141,76 @@
         </div>
       
 		<input type="button" value="Tính phí vận chuyển" name="calculate_order" class="btn btn-primary calculate_delivery"></input>
+
+
       </div>
   	</form>
+
+	          
 
 											
 						</div>
 					</div>
 						
 				</div>
+				
+
+
 			
-			</div>
+
+							<div class="payment-options">
+			<div class="shopper-informations">
+				
+				<div class="row" style="width: 848px">
+						<div class="col-sm-6">
+							<div class="shopper-info">
+								<p>Thông tin thanh toán online</p>
+								<form method="post" action="{{URL::to('cart/postcheckout')}}">
+								{{csrf_field()}}
+									  <input required type="text" placeholder="Họ đệm"  name="hodem">
+									  <input required type="text" placeholder="Tên" name="ten">
+										<input required type="text" placeholder="Số điện thoại*" name="sodienthoai">
+										<input required type="text" placeholder="Địa chỉ" name="diachi">
+										@if(Auth::check())
+										<input required type="text" placeholder="Email *"  name="email" value="{{Auth::user()->email}}">
+										@endif
+										<textarea required name="message" placeholder="Ghi chú" rows="16"></textarea>
+									<span>
+										<label><input type="radio" class="input-radio" name="payment_method" value="PAYPAL" checked="checked" > Thanh toán online</label>
+									</span>
+									  
+									<span>
+										<button type="submit" class="btn btn-primary">Lưu thông tin</button>
+									</span>
+						
+								</form>
+								
 			
-			<div class="payment-options">
-		
-            <div class="row" id="total-price">
-				  <div class="col-md-12">
-				      <h3>Thanh toán online</h3>
-				  </div>
+<div class="row" id="total-price">
+	  <div class="col-md-12">
+		  <h3>Thanh toán online</h3>
+	  </div>
+	</div>
+
+	    @include('fontend.paypal') 
+
+	</div>
+
+
+</div>
+											
+						</div>
+					</div>
+						
 				</div>
-				@include('fontend.paypal')
 			
-				</div>
-    
+	
+
 		
-		</div>
+
+			
+			
+		
 	</section>
 
 @endsection

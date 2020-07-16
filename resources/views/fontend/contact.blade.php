@@ -70,41 +70,24 @@
 							<a href="{{asset('/trangchu')}}"><img src="{{('public/fontend/image/logo.png')}}" alt="" /></a>
 						</div>
 						<div class="btn-group pull-right">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
-								</ul>
-							</div>
 							
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
-								</ul>
-							</div>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+							<li><a href="{{URL::to('cart/checkout')}}"><i class="fa fa-crosshairs"></i> Đặt hàng</a></li>
+								<li><a href="{{URL::to('/cart/show')}}"><i class="fa fa-shopping-cart"></i>{{Cart::count()}} Giỏ hàng</a></li>
 								@if(Auth::check())
 								<li><a href=""><i class="fa fa-lock"></i>Chào bạn: {{Auth::user()->name}}</a></li>
-								<li><a href="{{route('logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
+								<li><a href="{{route('logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
 								@else
-								<li><a href="{{route('signin')}}"><i class="fa fa-lock"></i> Login</a></li>
+								<li class="dropdown"><a  href="{{route('login')}}" ><i class="fa fa-angle-down"></i> Đăng nhập</a>
+								  <ul role="menu" class="sub-menu">
+                                        <li><a href="{{route('signin')}}">Đăng ký</a></li>
+				
+                                    </ul>
+								</li>
 								@endif
 							</ul>
 						</div>
@@ -127,24 +110,22 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="{{URL::to('/trangchu')}}" class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+							<li><a href="{{URL::to('/trangchu')}}" class="active">Trang chủ</a></li>
+								<li class="dropdown"><a href="#">Sản phẩm<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
-										<li><a href="{{URL::to('/carts')}}">{{Cart::count()}}</a></li> 
-										<li><a href="login.html">Login</a></li> 
+									@foreach($categories as $cates)
+                                        <li><a href="{{asset('/danhsachsanpham/' .$cates->cate_id. '/' .$cates->cate_slug.'.html')}}">{{$cates->cate_name}}</a></li>
+									@endforeach
+	
+									
+
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
+								<li class="dropdown"><a href="{{URL::to('/blog')}}">Tin tức<i class="fa fa-angle-down"></i></a>
+                                   
                                 </li> 
-								<li><a href="404.html">404</a></li>
-								<li><a href="contact-us.html">Contact</a></li>
+							
+								<li><a href="{{URL::to('/contact')}}">Liên hệ</a></li>
 							</ul>
 						</div>
 					</div>
@@ -157,7 +138,7 @@
     width: 206px;">
 					   </div>
 					   <div class="input-group-btn">
-					   <button class="btn btn-default" type="submit" style="height: 34px;"></button>
+					   <button class="btn btn-default" type="submit" style="height: 34px;"><i class="fa fa-search" aria-hidden="true"></i></button>
 					   <div>
 					</div>
 					</form>
@@ -251,32 +232,14 @@
 	    		</div>
 	    		<div class="col-sm-4">
 	    			<div class="contact-info">
-	    				<h2 class="title text-center">Contact Info</h2>
+	    				<h2 class="title text-center">Thông tin liên hệ</h2>
 	    				<address>
-	    					<p>E-Shopper Inc.</p>
-							<p>935 W. Webster Ave New Streets Chicago, IL 60614, NY</p>
-							<p>Newyork USA</p>
-							<p>Mobile: +2346 17 38 93</p>
-							<p>Fax: 1-714-252-0026</p>
-							<p>Email: info@e-shopper.com</p>
+	    					<p>E-Shopper.</p>
+							<p>TP.Thủ Dầu Một, Bình Dương</p>
+							<p>Số điện thoại: 0377411130</p>
+							<p>Email: lesang0169@gmail.com</p>
 	    				</address>
-	    				<div class="social-networks">
-	    					<h2 class="title text-center">Social Networking</h2>
-							<ul>
-								<li>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-google-plus"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-youtube"></i></a>
-								</li>
-							</ul>
-	    				</div>
+	    				
 	    			</div>
     			</div>    			
 	    	</div>  

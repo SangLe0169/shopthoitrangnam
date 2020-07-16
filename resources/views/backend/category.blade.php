@@ -10,18 +10,18 @@
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
-        <select class="input-sm form-control w-sm inline v-middle">
+        <!-- <select class="input-sm form-control w-sm inline v-middle">
           <option value="0">Bulk action</option>
           <option value="1">Delete selected</option>
           <option value="2">Bulk edit</option>
           <option value="3">Export</option>
         </select>
-        <button class="btn btn-sm btn-default">Apply</button>                
+        <button class="btn btn-sm btn-default">Apply</button> -->
       </div>
       <div class="col-sm-4">
       </div>
       <div class="col-sm-3">
-      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-times"></i>
   Thêm danh mục
 </button>
 
@@ -48,7 +48,7 @@
       
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-success">Save changes</button>
+        <button type="submit" class="btn btn-success"><i class="fas fa-times"></i>Save changes</button>
       </div>
   </form>
       </div>
@@ -62,11 +62,11 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
+            <!-- <th style="width:20px;">
               <label class="i-checks m-b-none">
                 <input type="checkbox"><i></i>
               </label>
-            </th>
+            </th> -->
             <th>Tên danh mục</th>
             
             <th style="width:30px;"></th>
@@ -77,20 +77,20 @@
         @foreach($catelist as $cate)
           <tr>
           
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
             <td>{{$cate->cate_name}}</td>
            
             <td><span class="text-ellipsis"></span></td>
             <td>
-            <a href="{{asset('admin/category/edit/'.$cate->cate_id)}}"  class="btn btn-success" ><span class="glyphicon glyphicon-edit"></span>
+            <a href="{{asset('admin/category/edit/'.$cate->cate_id)}}"  class="btn btn-success" > <i class="fas fa-tools"></i><span class="glyphicon glyphicon-edit"></span>
   Sửa
 </a>
          
   
 
-      <a onclick="return confirm('Bạn có muốn xóa không!')" href="{{asset('admin/category/delete/'.$cate->cate_id)}}" type="button" class="btn btn-danger"  data-target="#exampleModal">
+      <a onclick="return confirm('Bạn có muốn xóa không!')" href="{{asset('admin/category/delete/'.$cate->cate_id)}}" type="button" class="btn btn-danger"  data-target="#exampleModal"><i class="fas fa-backspace"></i>
         Xóa
-      </button>
+      </a>
 
             </td>
           </tr>
@@ -102,9 +102,9 @@
       <div class="row">
         
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          <small class="text-muted inline m-t-sm m-b-sm"></small>
         </div>
-        <div class="col-sm-7 text-right text-center-xs">                
+        <!-- <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
             <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
             <li><a href="">1</a></li>
@@ -113,7 +113,7 @@
             <li><a href="">4</a></li>
             <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
           </ul>
-        </div>
+        </div> -->
       </div>
     </footer>
   </div>

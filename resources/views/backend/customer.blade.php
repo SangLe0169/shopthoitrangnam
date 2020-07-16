@@ -10,24 +10,24 @@
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
-        <select class="input-sm form-control w-sm inline v-middle">
+        <!-- <select class="input-sm form-control w-sm inline v-middle">
           <option value="0">Bulk action</option>
           <option value="1">Delete selected</option>
           <option value="2">Bulk edit</option>
           <option value="3">Export</option>
         </select>
-        <button class="btn btn-sm btn-default">Apply</button>                
+        <button class="btn btn-sm btn-default">Apply</button>                 -->
       </div>
       <div class="col-sm-4">
       </div>
-      <div class="col-sm-3">
+      <!-- <div class="col-sm-3">
       <button type="button" class="btn btn-success" data-toggle="modal"  data-target="#exampleModal">
       <i class="fas fa-plus"></i>
   Thêm khách hàng
-</button>
+</button> -->
 @include('errors.note')
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -57,22 +57,22 @@
         <button type="submit" class="btn btn-success"><i class="fas fa-save"></i></button>
       </div>
   </form>
-      </div>
+      </div> 
      
     </div>
   </div>
 </div>
-      </div>
+      </div>-->
     </div>
     <div class="table-responsive">
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
+            <!-- <th style="width:20px;">
               <label class="i-checks m-b-none">
                 <input type="checkbox"><i></i>
               </label>
-            </th>
+            </th> -->
             <th>Họ khách hàng</th>
             <th>Ten khách hàng</th>
             <th>Số điện thoại</th>
@@ -86,7 +86,7 @@
         @foreach($cuslist as $customer)
           <tr>
           
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+            <!-- <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td> -->
             <td>{{$customer->cus_Hokhachhang}}</td>
             <td>{{$customer->cus_Tenkhachhang}}</td>
             <td>{{$customer->cus_Sodienthoai}}</td>
@@ -115,17 +115,17 @@
       <div class="row">
         
         <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
+          <small class="text-muted inline m-t-sm m-b-sm"></small>
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
-          <ul class="pagination pagination-sm m-t-none m-b-none">
+          <!-- <ul class="pagination pagination-sm m-t-none m-b-none">
             <li><a href=""><i class="fa fa-chevron-left"></i></a></li>
             <li><a href="">1</a></li>
             <li><a href="">2</a></li>
             <li><a href="">3</a></li>
             <li><a href="">4</a></li>
             <li><a href=""><i class="fa fa-chevron-right"></i></a></li>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </footer>

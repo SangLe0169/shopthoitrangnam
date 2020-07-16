@@ -172,6 +172,11 @@ class OrdersController extends Controller
         $order_detail->detail_Soluong = $data['order_qty'];
         $order_detail->save();
     }
+    public function del_Oder($id)
+    {
+        Orders::destroy($id);
+        return back();
+    }
     public function getOrdersdetail()
     {
      
@@ -182,7 +187,7 @@ class OrdersController extends Controller
         ->get();
     
         
-        //$data['size'] = Size::where('size_status',1)->orderBy('size_id','desc')->get();
+        $data['size'] = Size::where('size_status',1)->orderBy('size_id','desc')->get();
         return view('backend.orders_detail',$data);
     }
    

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title></title>
 </head>
 <body>
+<h2> Cảm ơn quý khách đã đặt hàng của chúng tôi</h2>
    <h3>Thông tin khách hàng</h3>
    <p>Khách hàng
      {{$info['ten']}}
@@ -20,39 +21,44 @@
       {{$info['diachi']}}
    </p>
    <tbody>
-   <table>
-   <tr>
-      <td><strong> Tên sản phẩm</strong></td>
-	  <td><strong> Giá</strong></td>
-	  <td><strong> Số lượng</strong></td>
-	  <td><strong> Thành tiền</strong></td>
-   </tr>
-                    @foreach($giohang as $item)
+   <div class="table-responsive cart_info">
+		
+				<table class="table table-condensed" style="boder: 1px">
+					<thead>
+						<tr class="cart_menu">
+							<td class="image" style="width:100px;">Hình</td>
+							<td class="description">Tên sp</td>
+							<td class="price" style="width:95px;">Giá</td>
+							<td class="quantity">Số lượng</td>
+							<td class="total" style="width:118px;">Tổng</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+					@foreach($items as $item)
 						<tr>
-                        <td class="cart_product">
+							<td class="cart_product">
 								<a href=""><img src="{{asset('storage/app/avatar/' .$item->options->img)}}" style="width:50px;height:70px;" alt=""></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">{{$item->name}}</a></h4>
-								<p>Web ID: 1089772</p>
+								
 							</td>
 							<td class="cart_price">
-								<p>{{number_format($item->price,0,',','.')}} đ</p>
+								<p>{{number_format($item->price,0,',','.')}} $</p>
 							</td>
 							<td class="cart_quantity">
-								{{$item->qty}}
+							  <p>{{$item->qty}}</p>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">{{number_format($item->price*$item->qty,0,',','.')}} đ</p>
+								<p class="cart_total_price">{{number_format($item->price*$item->qty,0,',','.')}} $</p>
 							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href="{{asset('cart/delete/' .$item->rowId)}}"><i class="fa fa-times"></i></a>
-							</td>
+							
 						</tr>
-                        @endforeach
-					
+                    @endforeach
 					</tbody>
 				</table>
+			
 			</div>
             <div class="row" id="total-price">
 				  <div class="col-md-12">

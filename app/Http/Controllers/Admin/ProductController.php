@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\Size;
+use App\Models\Attributes;
 use DB;
 
 class ProductController extends Controller
@@ -67,7 +68,7 @@ class ProductController extends Controller
             $request->img->storeAs('avatar',$img);
         }
         $arr['pro_Giamgia'] = $request->giamgia;
-        $arr['pro_Khuyenmai'] = $request->khuyenmai;
+        $arr['pro_Khuyenmai'] = $request->promotion;
         $arr['pro_Nhommau'] = $request->nhommau;
         $arr['pro_Soluong'] = $request->soluong;
         $arr['pro_Kichthuoc'] = $request->size;
@@ -79,6 +80,32 @@ class ProductController extends Controller
         return redirect('admin/product');
     }
 
+    public function getAttributes(Request $request,$id=null)
+    {
+        $productDetails = Product::with('attributes')->where(['pro_id'=>$id])->first();
+        if($request->isMethod('post')){
+            $data = $request->all();
+           // echo "<pre>"; print_r($data);
+             foreach($data['sku'] as $key => $val){
+             if(!empty($val)){
+                $attribute = new Attributes;
+                $attribute->size_product = $id;
+                $attribute->sku = $val;
+                $attribute->size = $data['size'][$key];
+                $attribute->save();
+            }
+                  
+    
+             }
+        }
+       
+        return view('backend.add_attributes')->with(compact('productDetails'));
+    }
+    public function delete_attributes($id=null)
+    {
+        Attributes::where(['id'=>$id])->delete();
+        return redirect()->back();
+    }
     public function getDeleteProduct($id)
     {
           Product::destroy($id);

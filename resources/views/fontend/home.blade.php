@@ -9,16 +9,16 @@
 								<div class="single-products">
 										<div class="productinfo text-center">
 											<img src="{{asset('storage/app/avatar/' .$item->pro_Hinhanh)}}" alt="" />
-											<h2>{{number_format($item->pro_Giamgia,0,',','.')}} đ</h2>
-											<span style="text-decoration:line-through">{{number_format($item->pro_Gia,0,',','.')}} đ</span>
+											<h2>{{number_format($item->pro_Giamgia,0,',','.')}} $</h2>
+											<span style="text-decoration:line-through">{{number_format($item->pro_Gia,0,',','.')}} $</span>
 											
 											<p>{{$item->pro_Tensanpham}}</p>
 											<a href="{{asset('/detail/' .$item->pro_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-											<h2>{{number_format($item->pro_Giamgia,0,',','.')}} đ</h2>
-											<span style="text-decoration:line-through">{{number_format($item->pro_Gia,0,',','.')}} đ</span>
+											<h2>{{number_format($item->pro_Giamgia,0,',','.')}} $</h2>
+											<span style="text-decoration:line-through">{{number_format($item->pro_Gia,0,',','.')}} $</span>
 												
 												<p>{{$item->pro_Tensanpham}}</p>
 												<a href="{{asset('/detail/' .$item->pro_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a>
@@ -27,8 +27,7 @@
 								</div>
 								<div class="choose">
 									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+									
 									</ul>
 								</div>
 							</div>
@@ -50,26 +49,24 @@
 								<div class="single-products">
 									<div class="productinfo text-center">
 										<img src="{{asset('storage/app/avatar/' .$new->pro_Hinhanh)}}" alt="" />
-										<h2>{{number_format($new->pro_Giamgia,0,',','.')}} đ</h2>
-										<span style="text-decoration:line-through">{{number_format($new->pro_Gia,0,',','.')}} đ</span>
+										<h2>{{number_format($new->pro_Giamgia,0,',','.')}} $</h2>
+										<span style="text-decoration:line-through">{{number_format($new->pro_Gia,0,',','.')}} $</span>
 										
 										<p>{{$new->pro_Tensanpham}}</p>
 										<a href="{{asset('/detail/' .$new->pro_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i></a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
-											<h2>$56</h2>
-											<p>Easy Polo Black Edition</p>
+											<h2>{{number_format($new->pro_Giamgia,0,',','.')}} $</h2>
+											<span style="text-decoration:line-through">{{number_format($new->pro_Gia,0,',','.')}} $</span>
+											<p>{{$new->pro_Tensanpham}}</p>
 											<a href="{{asset('/detail/' .$new->pro_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a>
 										</div>
 									</div>
 									<img src="images/home/new.png" class="new" alt="" />
 								</div>
 								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
+									
 								</div>
 							</div>
 						</div>
@@ -89,8 +86,8 @@
 											<div class="single-products">
 												<div class="productinfo text-center">
 													<img src="{{asset('storage/app/avatar/' .$promotions->pro_Hinhanh)}}" alt="">
-													<h2>{{number_format($promotions->pro_Giamgia,0,',','.')}} đ</h2>
-													<span style="text-decoration:line-through">{{number_format($promotions->pro_Gia,0,',','.')}} đ</span>
+													<h2>{{number_format($promotions->pro_Giamgia,0,',','.')}} $</h2>
+													<span style="text-decoration:line-through">{{number_format($promotions->pro_Gia,0,',','.')}} $</span>
 													<p>{{$promotions->pro_Tensanpham}}</p>
 													<a href="{{asset('/detail/' .$promotions->pro_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a>
 												</div>
@@ -108,9 +105,9 @@
 											<div class="single-products">
 												<div class="productinfo text-center">
 													<img src="{{asset('storage/app/avatar/' .$promotions->pro_Hinhanh)}}" alt="">
-													<h2>{{number_format($promotions->pro_Gia,0,',','.')}} đ</h2>
+													<h2>{{number_format($promotions->pro_Gia,0,',','.')}} $</h2>
 													<p>{{$promotions->pro_Tensanpham}}</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a>
+													<a href="{{asset('/detail/' .$promotions->pro_id)}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Xem chi tiết</a>
 												</div>
 												
 											</div>
