@@ -11,14 +11,13 @@
 			<div class="col-xs-12 col-md-12 col-lg-12">
 				
 				<div class="panel panel-primary">
-					<div class="panel-heading">Sửa Bài viết</div>
+					<div class="panel-heading">Sửa bài viết</div>
 					<div class="panel-body">
 						<form method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
 							<div class="row" style="margin-bottom:40px">
 								<div class="col-xs-8">
-									
-									<div class="form-group" >
+                                <div class="form-group" >
 										<label>Tiêu đề bài viết</label>
 										<input required type="text"  name='tieude' class="form-control" value="{{$posts->pos_Tieudebaiviet}}">
 									</div>

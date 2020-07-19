@@ -54,21 +54,7 @@ class PostsController extends Controller
    
 
    
-    // public function postEdit_postdetail(Request $request,$id)
-    // {
-    //     $posts_detail = new Posts_detail;
-    //     //$arr['posts_id'] = $request->mabaiviet;
-    //     $arr['pos_title'] = $request->tieude;
-    //     $arr['pos_content'] = $request->description;
-    //     $arr['pos_content_detail'] = $request->descriptions;
-    //     if($request->hasFile('img')){
-    //         $filename =$request->img->getClientOriginalName();
-    //         $arr['pos_image'] = $filename;
-    //         $request->img->storeAs('avatar',$filename);
-    //     }
-    //     $posts_detail::where('pos_detail',$id)->update($arr);
-    //     return redirect('admin/posts_detail');
-    // }
+   
     public function getDeletePosts($id)
     {
         Posts::destroy($id);

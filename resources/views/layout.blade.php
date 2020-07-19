@@ -91,12 +91,10 @@
 								<li><a href=""><i class="fa fa-lock"></i>Chào bạn: {{Auth::user()->name}}</a></li>
 								<li><a href="{{route('logout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
 								@else
-								<li class="dropdown"><a  href="{{route('login')}}" ><i class="fa fa-angle-down"></i> Đăng nhập</a>
-								  <ul role="menu" class="sub-menu">
-                                        <li><a href="{{route('signin')}}">Đăng ký</a></li>
-				
-                                    </ul>
+								<li><a  href="{{route('login')}}" >Đăng nhập</a>
+             
 								</li>
+								<li><a href="{{route('signin')}}">Đăng ký</a></li>
 								@endif
 							</ul>
 						</div>
@@ -130,7 +128,7 @@
 
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="{{URL::to('/blog')}}">Tin tức<i class="fa fa-angle-down"></i></a>
+								<li><a href="{{URL::to('/blog')}}">Tin tức</a>
                                    
                                 </li> 
 							

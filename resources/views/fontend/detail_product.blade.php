@@ -7,9 +7,9 @@
 								<img src="{{asset('storage/app/avatar/' .$item->pro_Hinhanh)}}" alt="" />
 							
 							</div>
-							<div id="similar-product" class="carousel slide" data-ride="carousel">
+							<!-- <div id="similar-product" class="carousel slide" data-ride="carousel">
 								
-								  <!-- Wrapper for slides -->
+								  <!-- Wrapper for slides 
 								    <div class="carousel-inner">
 										<div class="item active">
 										  <a href=""><img src="{{asset('storage/app/avatar/' .$item->pro_thumnails)}}" style="width:50px;heigh:60px" alt=""></a>
@@ -23,14 +23,14 @@
 										
 									</div>
 
-								  <!-- Controls -->
+								  <!-- Controls 
 								  <a class="left item-control" href="#similar-product" data-slide="prev">
 									<i class="fa fa-angle-left"></i>
 								  </a>
 								  <a class="right item-control" href="#similar-product" data-slide="next">
 									<i class="fa fa-angle-right"></i>
 								  </a>
-							</div>
+							</div> -->
 
 						</div>
 						<div class="col-sm-7">
@@ -298,7 +298,7 @@
 													<img src="{{asset('storage/app/avatar/' .$item->pro_Hinhanh)}}" alt="" />
 													<h2>{{number_format($item->pro_Gia,0,',','.')}} đ</h2>
 													<p>{{$item->pro_Tensanpham}}</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</button>
 												</div>
 											</div>
 										</div>

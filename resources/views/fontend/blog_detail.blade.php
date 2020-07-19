@@ -9,16 +9,16 @@
 							<h3>{{$blogs->pos_Tieudebaiviet}}</h3>
 							<div class="post-meta">
 								<ul>
-									<li><i class="fa fa-user"></i> Mac Doe</li>
+									<!-- <li><i class="fa fa-user"></i> Mac Doe</li>
 									<li><i class="fa fa-clock-o"></i> 1:33 pm</li>
-									<li><i class="fa fa-calendar"></i> DEC 5, 2013</li>
+									<li><i class="fa fa-calendar"></i> DEC 5, 2013</li> -->
 								</ul>
 								<span>
+									<!-- <i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
 									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-half-o"></i>
+									<i class="fa fa-star-half-o"></i> -->
 								</span>
 							</div>
 							<a href="">
@@ -35,7 +35,7 @@
 					</div><!--/blog-post-area-->
 
 					<div class="rating-area">
-						<ul class="ratings">
+						<!-- <ul class="ratings">
 							<li class="rate-this">Rate this item:</li>
 							<li>
 								<i class="fa fa-star color"></i>
@@ -51,15 +51,16 @@
 							<li><a class="color" href="">Pink <span>/</span></a></li>
 							<li><a class="color" href="">T-Shirt <span>/</span></a></li>
 							<li><a class="color" href="">Girls</a></li>
-						</ul>
+						</ul> -->
 					</div><!--/rating-area-->
 
-					<div class="socials-share">
+					<!-- <div class="socials-share">
 						<a href=""><img src="images/blog/socials.png" alt=""></a>
-					</div><!--/socials-share-->
+					</div> -->
 
 					<div class="media commnets">
-						<a class="pull-left" href="#">
+					<div class="fb-comments" data-href="{{$url_canonical}}" data-numposts="100" data-width=""></div>
+						<!-- <a class="pull-left" href="#">
 							<img class="media-object" src="images/blog/man-one.jpg" alt="">
 						</a>
 						<div class="media-body">
@@ -73,12 +74,12 @@
 									<li><a href=""><i class="fa fa-google-plus"></i></a></li>
 								</ul>
 								<a class="btn btn-primary" href="">Other Posts</a>
-							</div>
+							</div> -->
 						</div>
 					</div><!--Comments-->
 					<div class="response-area">
-						<h2>3 RESPONSES</h2>
-						<ul class="media-list">
+						<!--<h2>3 RESPONSES</h2>-->
+						<!-- <ul class="media-list">
 							<li class="media">
 								
 								<a class="pull-left" href="#">
@@ -122,10 +123,10 @@
 									<a class="btn btn-primary" href=""><i class="fa fa-reply"></i>Replay</a>
 								</div>
 							</li>
-						</ul>					
+						</ul>					 -->
 					</div><!--/Response-area-->
 					<div class="replay-box">
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col-sm-4">
 								<h2>Leave a replay</h2>
 								<form>
@@ -155,7 +156,7 @@
 									<a class="btn btn-primary" href="">post comment</a>
 								</div>
 							</div>
-						</div>
-					</div><!--/Repaly Box-->
+						</div> -->
+					<!--</div>/Repaly Box-->
 				</div>
 @endsection
